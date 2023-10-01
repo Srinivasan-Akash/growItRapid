@@ -44,6 +44,9 @@ export default async function page({
                         <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--bg-color)] text-[var(--text-color)]`}>
                             With Certificate
                         </span>
+                        <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--bg-color)] text-[var(--text-color)]`}>
+                            1,252,276+ Already Enrolled
+                        </span>
                     </p>
 
                     <div className={`flex items-center justify-center md:justify-start mt-4`}>
@@ -76,7 +79,7 @@ export default async function page({
                 </div>
 
                 <div className={`absolute w-full -bottom-2 z-30`}>
-                    
+
 
                     <svg
                         preserveAspectRatio="xMinYMin meet"
@@ -99,6 +102,111 @@ export default async function page({
                     <li className={style.filterText}>Courses</li>
                     <li className={style.filterText}>Testimonials</li>
                 </ul>
+
+                <div id={"about"} className={`${style.about}`}>
+                    <div className={'my-4'}>
+                        <h2 className={`text-lg font-semibold`}>What You Will Learn ??</h2>
+                        <ul className={style.points}>
+                            <li>Master the most up-to-date practical skills and knowledge that data scientists use in their daily roles</li>
+                            <li>Learn the tools, languages, and libraries used by professional data scientists, including Python and SQL</li>
+                            <li>Apply your new skills to real-world projects and build a portfolio of data projects that showcase your proficiency to employers</li>
+                            <li>Import and clean data sets, analyze and visualize data, and build machine learning models and pipelines</li>
+                        </ul>
+                    </div>
+
+                    <div className={`flex justify-center items-start my-4`}>
+                        <div className={`w-[50%]`}>
+                            <h2 className={`text-lg font-semibold mt-2`}>Skills That You Will Gain ??</h2>
+                            <p className={`w-[100%] text-center md:text-left text-[var(--text-color)]`}>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    Python
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    Math Plot Lib
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    NumPy
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    Pandas
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    PowerBi
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    JavaScript
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    Python
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    Math Plot Lib
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    NumPy
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    Playwright
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    PowerBi
+                                </span>
+                                <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                    JavaScript
+                                </span>
+                            </p>
+                        </div>
+                        <div className={'w-[50%]'}>
+                            <h2 className={`text-lg font-semibold mt-2`}>Details To Know</h2>
+                            <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                Begginner Friendly
+                            </span>
+                            <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                4.8 Star Rating
+                            </span>
+
+                            <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                6 Months Duration (10hrs/week)
+                            </span>
+                            <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                with Certificate
+                            </span>
+                            <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
+                                1.6l+ enrolled students
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id={"outcomes"} className={`${style.outcomes}`}>
+                    <div className={style.outcomesTextContent}>
+                        <h2 className={`text-lg font-semibold`}>Prepare For a Career In Project Management</h2>
+                        <ul className={style.benefits}>
+                            <li>Receive professional-level training from Google</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum harum sint, deleniti fugiat eos omnis unde tempore rem laudantium earum! Receive professional-level training from Google</li>
+                            <li>Receive professional-level training from Google</li>
+                            <li>Receive professional-level training from Google</li>
+                        </ul>
+                    </div>
+
+                    <div className={`${style.outcomesImgContent}`}>
+                        <Image className={style.Img} src={'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFuZHNjYXBlJTIwbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60'} width={500} height={100} alt='hello' />
+                        <div className={style.outcomeInfo}>
+                            <div>
+                                <h1 className='text-lg'>$77,000</h1>
+                                <p className='text-sm'>Average Salary In India</p>
+                            </div>
+                            <div>
+                                <h1 className='text-lg'>77,050+</h1>
+                                <p className='text-sm'>Job Openings In India</p>
+                            </div>
+                            <div>
+                                <h1 className='text-lg'>75%</h1>
+                                <p className='text-sm'>Course Graduates Got Job</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
