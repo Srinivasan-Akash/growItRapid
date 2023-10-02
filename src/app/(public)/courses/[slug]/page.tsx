@@ -1,5 +1,6 @@
 'use client'
-import React, { cache, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import client from '@/utils/sanity-client';
 import Stars from '@/components/stars';
 import style from './style.module.scss'
@@ -7,6 +8,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa'
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
 export default function Page({
     params
@@ -25,6 +30,7 @@ export default function Page({
             setActiveIndex(index);
         }
     };
+    const data = [1,2,3,5,5]
 
     const items = [{ title: "Programming for Everybody (Getting Started with Python)", content: "Hjkkgfghkjhv" }, { title: "Python Data Structures", content: "Hjkkgfghkjhv" }, { title: "PyGame Tutorial With Python", content: "Hjkkgfghkjhv" }, { title: "Programming for Everybody (Getting Started with Python)", content: "Hjkkgfghkjhv" }, { title: "Python Data Structures", content: "Hjkkgfghkjhv" }, { title: "PyGame Tutorial With Python", content: "Hjkkgfghkjhv" }]
     return (
@@ -298,8 +304,43 @@ export default function Page({
                 </div>
 
                 <div id={"testimonials"} className={`${style.testimonials}`}>
-                    <h2 className={`text-lg font-semibold`}>Why people choose Coursera for their career</h2>
+                    <h2 className={`text-xl font-semibold text-center py-4`}>Why people choose Coursera for their career</h2>
+                    <Swiper
+                effect={'coverflow'}
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView={'auto'}
+                initialSlide={data.length/2}
+                navigation={true}
+                coverflowEffect={{
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 2,
+                    slideShadows: true,
+                }}
+                pagination={true}
+                modules={[EffectCoverflow, Pagination, Navigation]}
+                className={style.slideContainer}
+            >
+                {
+                    data.map((item: any, index: number) => (
+                        <SwiperSlide key={index} className={style.slide}>
+                            <div className={style.profileInfo}>
+                                <Image className={style.profilePic} width={60} height={60} src={"https://images.unsplash.com/photo-1696219695041-8dddb603cd33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"} alt={"HELLPO"}/>
+                                <div className={style.profileName}>
+                                    <h2>Akash Srinivasan</h2>
+                                    <p>Full Stack Web Developer</p>
+                                </div>
+                            </div>
 
+                            <div className={style.testimonial}>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum consequuntur placeat veniam reiciendis illum veritatis accusantium similique numquam rem dicta. Nostrum, explicabo natus. Voluptate debitis accusantium praesentium aut mollitia sed.
+                            </div>
+                        </SwiperSlide>
+                    ))
+                }
+            </Swiper>
                 </div>
             </div>
         </div>
