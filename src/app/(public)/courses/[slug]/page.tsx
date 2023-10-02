@@ -1,26 +1,32 @@
-import React, { cache } from 'react'
+'use client'
+import React, { cache, useState } from 'react'
 import client from '@/utils/sanity-client';
-import { groq } from 'next-sanity';
-import { BlogData } from '@/app/(admin)/admin/dashboard/blogs/page';
-import Content from '@/components/editor/content';
 import Stars from '@/components/stars';
 import style from './style.module.scss'
-import formatDate from '@/utils/date';
 import Image from 'next/image';
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa'
+import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 
-const clientFetch = cache(client.fetch.bind(client));
-
-export default async function page({
+export default function Page({
     params
 }: {
     params: {
         slug: string;
     };
 }) {
+
+    const [activeIndex, setActiveIndex] = useState(null);
+
+    const toggleAccordion = (index: any) => {
+        if (activeIndex === index) {
+            setActiveIndex(null);
+        } else {
+            setActiveIndex(index);
+        }
+    };
+
+    const items = [{ title: "Programming for Everybody (Getting Started with Python)", content: "Hjkkgfghkjhv" }, { title: "Python Data Structures", content: "Hjkkgfghkjhv" }, { title: "PyGame Tutorial With Python", content: "Hjkkgfghkjhv" }, { title: "Programming for Everybody (Getting Started with Python)", content: "Hjkkgfghkjhv" }, { title: "Python Data Structures", content: "Hjkkgfghkjhv" }, { title: "PyGame Tutorial With Python", content: "Hjkkgfghkjhv" }]
     return (
         <div className={``}>
             <header className={`relative w-full pb-[11%] bg-[var(--tertiary-color)] `}>
@@ -179,104 +185,123 @@ export default async function page({
                 </div>
 
                 <div id={"outcomes"} className={`${style.outcomes}`}>
-                    <div className={style.outcomesTextContent}>
-                        <h2 className={`text-lg font-semibold`}>Prepare For a Career In Project Management</h2>
-                        <ul className={style.benefits}>
-                            <li>Receive professional-level training from Google</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum harum sint, deleniti fugiat eos omnis unde tempore rem laudantium earum! Receive professional-level training from Google</li>
-                            <li>Receive professional-level training from Google</li>
-                            <li>Receive professional-level training from Google</li>
-                        </ul>
-                    </div>
+                    <div className={style.careerInfo}>
+                        <div className={style.outcomesTextContent}>
+                            <h2 className={`text-lg font-semibold`}>Prepare For a Career In Project Management</h2>
+                            <ul className={style.benefits}>
+                                <li>Receive professional-level training from Google</li>
+                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum harum sint, deleniti fugiat eos omnis unde tempore rem laudantium earum! Receive professional-level training from Google</li>
+                                <li>Receive professional-level training from Google</li>
+                                <li>Receive professional-level training from Google</li>
+                            </ul>
+                        </div>
 
-                    <div className={`${style.outcomesImgContent}`}>
-                        <Image className={style.Img} src={'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFuZHNjYXBlJTIwbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60'} width={500} height={100} alt='hello' />
-                        <div className={style.outcomeInfo}>
-                            <div>
-                                <h1 className='text-lg'>$77,000</h1>
-                                <p className='text-sm'>Average Salary In India</p>
-                            </div>
-                            <div>
-                                <h1 className='text-lg'>77,050+</h1>
-                                <p className='text-sm'>Job Openings In India</p>
-                            </div>
-                            <div>
-                                <h1 className='text-lg'>75%</h1>
-                                <p className='text-sm'>Course Graduates Got Job</p>
+                        <div className={`${style.outcomesImgContent}`}>
+                            <Image className={style.Img} src={'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFuZHNjYXBlJTIwbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60'} width={500} height={100} alt='hello' />
+                            <div className={style.outcomeInfo}>
+                                <div>
+                                    <h1 className='text-lg'>$77,000</h1>
+                                    <p className='text-sm'>Average Salary In India</p>
+                                </div>
+                                <div>
+                                    <h1 className='text-lg'>77,050+</h1>
+                                    <p className='text-sm'>Job Openings In India</p>
+                                </div>
+                                <div>
+                                    <h1 className='text-lg'>75%</h1>
+                                    <p className='text-sm'>Course Graduates Got Job</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div className={style.certificate}>
+                        <div className={style.textContent}>
+                            <h2 className={`text-lg font-semibold`}>Earn A Certificate</h2>
+                            <p className='text-sm leading-4 text-[var(--dark-primary-color)]'>Add this credential to your linkedin profile, resume or CV. Share it on social media and in your performance review.</p>
+                        </div>
+                        <div className={style.ImgContent}>
+                            <Image className={style.certificateImg} src={'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFuZHNjYXBlJTIwbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60'} width={500} height={100} alt='hello' />
+
+                        </div>
+
+                    </div>
+
+                    <div id='courses' className={style.courses}>
+                        <h2 className={`text-lg font-semibold`}>Specialization - 5 course series</h2>
+                        <p className='text-sm text-[var(--dark-primary-color)]'>This Specialization builds on the success of the Python for Everybody course and will introduce fundamental programming concepts including data structures, networked application program interfaces, and databases, using the Python programming language. In the Capstone Project, you’ll use the technologies learned throughout the Specialization to design and create your own  applications for data retrieval, processing, and visualization.</p>
+                        <div className={style.accordion}>
+                            {items.map((item, index) => (
+                                <div key={index} className={style['accordion-item']}>
+                                    <div
+                                        className={`${style['accordion-header']} ${activeIndex === index ? style.active : ''}`}
+                                        onClick={() => toggleAccordion(index)}
+                                    >
+                                        <div>
+                                            <Link href={"#"}>{item.title}</Link>
+
+                                            <div className={style.tags}>
+                                                <span key={0} className={`inline-block px-2 py-1 mr-2 text-[.65rem] font-semibold rounded-md bg-[var(--bg-color)] text-[var(--text-color)]`}>
+                                                    Course 1
+                                                </span>
+                                                <span key={0} className={`inline-block px-2 py-1 mr-2 text-[.65rem] font-semibold rounded-md bg-[var(--bg-color)] text-[var(--text-color)]`}>
+                                                    4.8 Star Rating (85224+ reviews)
+                                                </span>
+                                                <span key={0} className={`inline-block px-2 py-1 mr-2 text-[.65rem] font-semibold rounded-md bg-[var(--bg-color)] text-[var(--text-color)]`}>
+                                                    19 hrs duration
+                                                </span>
+                                            </div>
+                                        </div>
+                                        {activeIndex === index ? <FaChevronUp /> : <FaChevronDown />}
+                                    </div>
+                                    <div
+                                        className={`${style['accordion-content']} ${activeIndex === index ? style.open : ''}`}
+                                    >
+                                        {/* {item.content} */}
+                                        <h2 className={`text-xs font-semibold`}>What You Will Learn ??</h2>
+                                        <ul className={style.points}>
+                                            <li className='text-xs'>Master the most up-to-date practical skills and knowledge that data scientists use in their daily roles</li>
+                                            <li className='text-xs'>Learn the tools, languages, and libraries used by professional data scientists, including Python and SQL</li>
+                                            <li className='text-xs'>Apply your new skills to real-world projects and build a portfolio of data projects that showcase your proficiency to employers</li>
+                                            <li className='text-xs'>Import and clean data sets, analyze and visualize data, and build machine learning models and pipelines</li>
+                                        </ul>
+
+                                        <h2 className={`text-xs font-semibold mt-2`}>Skills You Will Gain</h2>
+                                        <div className={style.tags}>
+                                            <span key={0} className={`inline-block px-2 py-1 mr-2 text-[0.6rem] font-semibold rounded-md bg-[var(--bg-color)] text-[var(--text-color)]`}>
+                                                Python
+                                            </span>
+                                            <span key={0} className={`inline-block px-2 py-1 mr-2 text-[0.6rem] font-semibold rounded-md bg-[var(--bg-color)] text-[var(--text-color)]`}>
+                                                Java
+                                            </span>
+                                            <span key={0} className={`inline-block px-2 py-1 mr-2 text-[0.6rem] font-semibold rounded-md bg-[var(--bg-color)] text-[var(--text-color)]`}>
+                                                C++
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className={`${style.certificate}`}>
+                        <div className={style.textContent}>
+                            <h2 className={`text-lg font-semibold`}>Prepare For A Degree</h2>
+                            <p className='text-sm leading-4 text-[var(--dark-primary-color)]'>Enroll in the University of Michigan's Specialization for a preview of related degree program content, aiding your decision on the right fit.</p>
+                        </div>
+                        <div className={style.ImgContent}>
+                            <Image className={style.certificateImg} src={'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFuZHNjYXBlJTIwbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60'} width={500} height={100} alt='hello' />
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id={"testimonials"} className={`${style.testimonials}`}>
+                    <h2 className={`text-lg font-semibold`}>Why people choose Coursera for their career</h2>
+
                 </div>
             </div>
         </div>
     )
-}
-
-/**
- * Generating meta data for the page
- */
-type MetaDataProps = {
-    params: { slug: string };
-};
-
-export async function generateMetadata({ params }: MetaDataProps): Promise<Metadata> {
-    const { slug } = params;
-
-    const data = (await clientFetch<BlogData[]>(groq`*[_type == "blogs" && slug.current == "${slug}" && is_published == true] {
-        _id,
-        title,
-        description,
-        "image": image.asset->url,
-        "slug": slug.current,
-        is_published,
-        time_to_read,
-        "content": custom_content,
-        _createdAt,
-        _updatedAt,
-        author->{
-            ...,
-            "image": image.asset->url,
-            "slug": slug.current,
-        },
-        tags
-    }`))[0];
-
-    if (data) {
-        return {
-            title: data.title,
-            description: data.description,
-            authors: [
-                {
-                    name: data.author.name,
-                    url: data.author.url,
-                }
-            ],
-            assets: [data.image],
-            openGraph: {
-                type: 'article',
-                title: data.title,
-                description: data.description,
-                images: [data.image],
-                authors: [data.author.name, data.author.url],
-                url: `https://www.growitrapid.com/blogs/${data.slug}`,
-                tags: data.tags,
-                section: 'Blogs',
-            },
-            twitter: {
-                site: '@site',
-                card: 'summary_large_image',
-                title: data.title,
-                description: data.description,
-                images: [data.image],
-            },
-            appleWebApp: {
-                title: data.title,
-            },
-        }
-    } else {
-        return {
-            title: 'Grow It Rapid',
-            description: 'Grow It Rapid',
-        }
-    }
 }

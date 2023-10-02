@@ -14,7 +14,6 @@
     }
 }
 
-
 .load_more_btn {
     display: flex;
     justify-content: center;
@@ -32,91 +31,55 @@
 }
 
 .courses {
-    margin: 1em 2em 2em 2em;
-    z-index: 2;
+    .accordion {
+        .accordion-item {
+            border: 1px solid var(--border-primary-color);
+            margin: 10px 0;
+            border-radius: 4px;
 
-    .gridContainer {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 1em;
-        text-align: center;
-        font-size: 18px;
-        grid-auto-rows: minmax(50px, auto);
-        padding: 1em 0 1em 0;
-    }
+            .accordion-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+                cursor: pointer;
+                background-color: var(--tertiary-color);
+                transition: background-color 0.3s;
 
-    .gridContainer>div:hover {
-        transform: scale(1.02);
-        transition: all .25s ease;
-        cursor: pointer;
-    }
+                &.active {
+                    background-color: var(--dark-tertiary-color);
+                }
 
-    .gridContainer>div {
-        border-radius: 12px;
-        border: 1px solid var(--border-primary-color);
-    }
+                svg {
+                    font-size: 1.2rem;
+                    transition: transform 0.3s;
+                }
+            }
 
-    .gridContainer img {
-        border-radius: 12px;
-    }
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                padding: 0 10px;
+                /* Remove default padding */
+                border-top: 1px solid var(--border-primary-color);
+                background-color: var(--tertiary-color);
+                transition: max-height 0.5s ease, padding 0.5s ease;
+                /* Updated transition */
 
-    .content h2,
-    .content p {
-        position: relative;
-    }
+                .points {
+                    list-style-type: circle;
+                    padding-left: 1em;
+                    color: var(--dark-primary-color);
+                }
 
-    .content {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-t;
-        text-align: left;
-        padding: 1em;
-        flex-direction: column;
-    }
-
-    .gridContainer>div:not(:hover) {
-        transform: scale(1);
-        transition: all .25s ease;
-    }
-
-    .card__overlay {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 5;
-        top: 0;
-        border-radius: 12px;
-        left: 0;
-        background-image: linear-gradient(to right, rgba(var(--dark-tertiary-color-rgb), 1), rgba(var(--dark-tertiary-color-rgb), 0.5));
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    .boxA {
-        background-color: #FF5733;
-        grid-row: span 5;
-        grid-column: span 2;
-    }
-
-    .boxB {
-        background-color: #33FF57;
-        grid-row: span 4;
-    }
-
-    .boxC {
-        background-color: #5733FF;
-        grid-row: span 4;
-    }
-
-    .boxD {
-        background-color: #FFFF33;
-        grid-row: span 3;
-    }
-
-    .boxE {
-        background-color: #33FFFF;
-        grid-row: span 3;
+                &.open {
+                    max-height: 1000px;
+                    /* Set a maximum height to allow for sliding */
+                    padding: 10px;
+                    /* Restore padding on open */
+                }
+            }
+        }
     }
 }
 
@@ -138,14 +101,56 @@
     }
 
     .outcomes {
-        display: flex;
-        align-items: center;
-        gap: 1em;
         margin-top: 2em;
 
-        .outcomesTextContent, .outcomesImgContent {
+        .careerInfo {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+
+        .certificate {
+            background: var(--tertiary-color);
+            border: 1px solid var(--border-primary-color);
+            border-radius: 12px;
+            margin: 3em 0;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20vh;
+
+            .textContent {
+                width: 50%;
+                padding: 1em;
+
+                p {
+                    width: 80%;
+                }
+            }
+
+            .ImgContent {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                position: relative;
+                height: 100%;
+
+                .certificateImg {
+                    height: 150%;
+                    width: 60%;
+                    border-radius: 12px;
+                    margin-right: 1em;
+                }
+            }
+        }
+
+        .outcomesTextContent,
+        .outcomesImgContent {
             width: 50%;
         }
+
         .outcomesImgContent {
             background: var(--tertiary-color);
             border: 1px solid var(--border-primary-color);
@@ -165,6 +170,7 @@
             width: 100%;
             border-radius: 12px;
         }
+
         .outcomeInfo {
             display: flex;
             align-items: center;
@@ -185,7 +191,7 @@
                 color: var(--dark-primary-color);
             }
         }
-        
+
     }
 
     .filter {
