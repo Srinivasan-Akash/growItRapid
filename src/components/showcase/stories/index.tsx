@@ -16,7 +16,6 @@ export default function Stories({ data }: {
         description: string;
     }[];
 }) {
-    console.log(data, "TESTIMONIAL")
     return (
         <div>
             <h1 className={`text-3xl font-bold fade-in-title ${style.title}`}>Honest Success Stories From <br />Our Students & Clients</h1>

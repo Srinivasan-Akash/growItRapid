@@ -46,10 +46,6 @@
                 background-color: var(--tertiary-color);
                 transition: background-color 0.3s;
 
-                &.active {
-                    background-color: var(--dark-tertiary-color);
-                }
-
                 svg {
                     font-size: 1.2rem;
                     transition: transform 0.3s;
@@ -97,6 +93,13 @@
             padding-left: 1em;
             gap: .5em;
             color: var(--dark-primary-color);
+        }
+
+        .details {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            margin: 1rem 0;
         }
     }
 
@@ -319,5 +322,89 @@
             font-weight: 300;
             font-size: .8em;
           }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .careerInfo{
+        flex-direction: column-reverse;
+
+        .outcomesTextContent,
+        .outcomesImgContent {
+            width: 100% !important;
+        }
+    }
+
+    .certificate .textContent {
+        width: 100%;
+        padding: 1em;
+
+        p {
+            width: 100% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .points {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .certificate {
+        flex-direction: column-reverse;
+        height: fit-content !important;
+
+        .ImgContent {
+            width: 100% !important;
+            margin: 0;
+            justify-content: center !important;
+
+            img {
+                margin: 1em 1em 0em 1em;
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
+
+        .textContent {
+            width: 100% !important;
+            padding: 1em;
+
+            p {
+                width: 100%;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+    .details{
+        flex-direction: column;
+    }
+
+    .details > div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .outcomeInfo {
+        flex-direction: column;
+
+        div {
+            border-right: none !important;
+            padding: 1em;
+            border-bottom: 2px solid var(--border-primary-color);
+            width: 100% !important;
+            text-align: left;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        
     }
 }

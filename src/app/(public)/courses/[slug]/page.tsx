@@ -30,7 +30,21 @@ export default function Page({
             setActiveIndex(index);
         }
     };
-    const data = [1,2,3,5,5]
+    const data = [1, 2, 3, 5, 5]
+
+    function scrollToSection(sectionName: String) {
+        const section = document.getElementById(String(sectionName));
+
+        if (section) {
+            const navbarHeight = 20;
+            const offset = section.getBoundingClientRect().top - navbarHeight;
+
+            window.scrollTo({
+                top: offset,
+                behavior: "smooth",
+            });
+        }
+    }
 
     const items = [{ title: "Programming for Everybody (Getting Started with Python)", content: "Hjkkgfghkjhv" }, { title: "Python Data Structures", content: "Hjkkgfghkjhv" }, { title: "PyGame Tutorial With Python", content: "Hjkkgfghkjhv" }, { title: "Programming for Everybody (Getting Started with Python)", content: "Hjkkgfghkjhv" }, { title: "Python Data Structures", content: "Hjkkgfghkjhv" }, { title: "PyGame Tutorial With Python", content: "Hjkkgfghkjhv" }]
     return (
@@ -109,10 +123,10 @@ export default function Page({
 
             <div className={style.courseInfo}>
                 <ul className={style.filter}>
-                    <li className={style.filterText}>About</li>
-                    <li className={style.filterText}>Outcomes</li>
-                    <li className={style.filterText}>Courses</li>
-                    <li className={style.filterText}>Testimonials</li>
+                    <li className={style.filterText} onClick={() => scrollToSection("about")}>About</li>
+                    <li className={style.filterText} onClick={() => scrollToSection("outcomes")}>Outcomes</li>
+                    <li className={style.filterText} onClick={() => scrollToSection("courses")}>Courses</li>
+                    <li className={style.filterText} onClick={() => scrollToSection("testimonials")}>Testimonials</li>
                 </ul>
 
                 <div id={"about"} className={`${style.about}`}>
@@ -126,10 +140,10 @@ export default function Page({
                         </ul>
                     </div>
 
-                    <div className={`flex justify-center items-start my-4`}>
+                    <div className={style.details}>
                         <div className={`w-[50%]`}>
                             <h2 className={`text-lg font-semibold mt-2`}>Skills That You Will Gain ??</h2>
-                            <p className={`w-[100%] text-center md:text-left text-[var(--text-color)]`}>
+                            <p className={`w-[100%] text-left md:text-left text-[var(--text-color)]`}>
                                 <span key={0} className={`inline-block px-2 py-1 mt-2 mr-2 text-xs font-semibold rounded-md bg-[var(--tertiary-color)] text-[var(--text-color)]`}>
                                     Python
                                 </span>
@@ -306,41 +320,41 @@ export default function Page({
                 <div id={"testimonials"} className={`${style.testimonials}`}>
                     <h2 className={`text-xl font-semibold text-center py-4`}>Why people choose Coursera for their career</h2>
                     <Swiper
-                effect={'coverflow'}
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView={'auto'}
-                initialSlide={data.length/2}
-                navigation={true}
-                coverflowEffect={{
-                    rotate: 0,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 2,
-                    slideShadows: true,
-                }}
-                pagination={true}
-                modules={[EffectCoverflow, Pagination, Navigation]}
-                className={style.slideContainer}
-            >
-                {
-                    data.map((item: any, index: number) => (
-                        <SwiperSlide key={index} className={style.slide}>
-                            <div className={style.profileInfo}>
-                                <Image className={style.profilePic} width={60} height={60} src={"https://images.unsplash.com/photo-1696219695041-8dddb603cd33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"} alt={"HELLPO"}/>
-                                <div className={style.profileName}>
-                                    <h2>Akash Srinivasan</h2>
-                                    <p>Full Stack Web Developer</p>
-                                </div>
-                            </div>
+                        effect={'coverflow'}
+                        grabCursor={true}
+                        centeredSlides={true}
+                        slidesPerView={'auto'}
+                        initialSlide={data.length / 2}
+                        navigation={true}
+                        coverflowEffect={{
+                            rotate: 0,
+                            stretch: 0,
+                            depth: 100,
+                            modifier: 2,
+                            slideShadows: true,
+                        }}
+                        pagination={true}
+                        modules={[EffectCoverflow, Pagination, Navigation]}
+                        className={style.slideContainer}
+                    >
+                        {
+                            data.map((item: any, index: number) => (
+                                <SwiperSlide key={index} className={style.slide}>
+                                    <div className={style.profileInfo}>
+                                        <Image className={style.profilePic} width={60} height={60} src={"https://images.unsplash.com/photo-1696219695041-8dddb603cd33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"} alt={"HELLPO"} />
+                                        <div className={style.profileName}>
+                                            <h2>Akash Srinivasan</h2>
+                                            <p>Full Stack Web Developer</p>
+                                        </div>
+                                    </div>
 
-                            <div className={style.testimonial}>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum consequuntur placeat veniam reiciendis illum veritatis accusantium similique numquam rem dicta. Nostrum, explicabo natus. Voluptate debitis accusantium praesentium aut mollitia sed.
-                            </div>
-                        </SwiperSlide>
-                    ))
-                }
-            </Swiper>
+                                    <div className={style.testimonial}>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum consequuntur placeat veniam reiciendis illum veritatis accusantium similique numquam rem dicta. Nostrum, explicabo natus. Voluptate debitis accusantium praesentium aut mollitia sed.
+                                    </div>
+                                </SwiperSlide>
+                            ))
+                        }
+                    </Swiper>
                 </div>
             </div>
         </div>
